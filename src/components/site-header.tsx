@@ -3,10 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import {
-  NAVIGATION_ITEMS,
-  BUTTON_ITEMS,
-} from "@/constants/navigation";
+import { NAVIGATION_ITEMS, BUTTON_ITEMS } from "@/constants/navigation";
 
 function getNavLinkClasses(itemHref: string, pathname: string) {
   const base = "text-sm transition duration-200";
@@ -33,10 +30,10 @@ export default function SiteHeader() {
             FIJI
           </div>
           <div className="leading-tight">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/90">
               Firman Ishikawaryu
             </p>
-            <p className="text-xs text-white/65">Ju-Jutsu Indonesia</p>
+            <p className="text-[0.65rem] text-white/60">Ju-Jutsu Indonesia</p>
           </div>
         </Link>
 
@@ -61,7 +58,11 @@ export default function SiteHeader() {
           ))}
 
           {BUTTON_ITEMS.map((button) => (
-            <Link key={button.label} href={button.href} className={button.style}>
+            <Link
+              key={button.label}
+              href={button.href}
+              className={button.style}
+            >
               {button.label}
             </Link>
           ))}

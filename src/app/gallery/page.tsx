@@ -69,7 +69,9 @@ export default function GalleryPage() {
         <section className="border-b border-white/10">
           <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
             <FadeInSection>
-              <h1 className="text-4xl font-bold md:text-5xl">Gallery</h1>
+              <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl">
+                Gallery
+              </h1>
               <p className="mt-4 max-w-3xl text-white/80">
                 Organized media showcase for FIJI training sessions, seminars,
                 and community activities.
@@ -180,18 +182,6 @@ export default function GalleryPage() {
         description={activeVideoItem?.description || ""}
         videoUrl={activeVideoItem?.videoUrl || ""}
       />
-
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-[#111111] px-5 py-8 text-center text-sm text-white/60">
-        <p>
-          FIJI Gallery - Structured documentation of training excellence,
-          growth, and community spirit.
-        </p>
-        <p className="mt-2">
-          Copyright {year} FIJI (Firman Ishikawaryu Ju-Jutsu Indonesia). All
-          rights reserved.
-        </p>
-      </footer>
     </div>
   );
 }

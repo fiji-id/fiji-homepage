@@ -3,15 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Users,
-  Target,
-  Heart,
-  Zap,
-  Trophy,
-  Shield,
-  Clock,
-} from "lucide-react";
+import { Users, Target, Heart, Zap, Trophy, Shield, Clock } from "lucide-react";
 import SiteHeader from "@/components/site-header";
 
 const programs = [
@@ -65,7 +57,12 @@ const programs = [
     subtitle: "Personalized",
     description:
       "One-on-one coaching tailored to your goals, pace, and priorities. Flexible scheduling and customized progression.",
-    benefits: ["Personalization", "Flexibility", "Intensive focus", "Faster progress"],
+    benefits: [
+      "Personalization",
+      "Flexibility",
+      "Intensive focus",
+      "Faster progress",
+    ],
     icon: Trophy,
     schedule: "By appointment",
   },
@@ -125,11 +122,13 @@ export default function ProgramsPage() {
                 <p className="inline-flex rounded-full border border-[#C62828]/50 bg-[#C62828]/10 px-4 py-1 text-xs uppercase tracking-[0.2em] text-red-100">
                   Training Programs
                 </p>
-                <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
+                <h1 className="mt-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
                   Training Programs for Everyone
                 </h1>
                 <p className="mt-4 max-w-3xl text-white/80">
-                  FIJI offers specialized martial arts training for all ages and fitness levels. Find the program that fits your goals and join our growing community of disciplined practitioners.
+                  FIJI offers specialized martial arts training for all ages and
+                  fitness levels. Find the program that fits your goals and join
+                  our growing community of disciplined practitioners.
                 </p>
               </div>
             </FadeInSection>
@@ -140,7 +139,8 @@ export default function ProgramsPage() {
           <FadeInSection>
             <h2 className="text-3xl font-bold md:text-4xl">Our Programs</h2>
             <p className="mt-4 max-w-3xl text-white/80">
-              Whether you&apos;re a complete beginner or looking to advance your skills, we have a program designed for you.
+              Whether you&apos;re a complete beginner or looking to advance your
+              skills, we have a program designed for you.
             </p>
           </FadeInSection>
 
@@ -152,9 +152,7 @@ export default function ProgramsPage() {
                   <motion.div
                     className="group rounded-2xl border border-white/10 bg-[#1B1B1B] p-6 cursor-pointer transition hover:border-[#C62828]/50"
                     onClick={() =>
-                      setExpandedProgram(
-                        isExpanded ? null : program.title
-                      )
+                      setExpandedProgram(isExpanded ? null : program.title)
                     }
                     animate={{
                       borderColor: isExpanded
@@ -165,7 +163,9 @@ export default function ProgramsPage() {
                     <div className="flex items-start justify-between">
                       <div>
                         <program.icon className="h-6 w-6 text-[#F1C40F] mb-3" />
-                        <h3 className="text-lg font-semibold">{program.title}</h3>
+                        <h3 className="text-lg font-semibold">
+                          {program.title}
+                        </h3>
                         <p className="text-sm text-white/60 mt-1">
                           {program.subtitle}
                         </p>
@@ -229,7 +229,9 @@ export default function ProgramsPage() {
         <section className="border-y border-white/10 bg-[#181818]">
           <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
             <FadeInSection>
-              <h2 className="text-3xl font-bold md:text-4xl">Why Choose FIJI?</h2>
+              <h2 className="text-3xl font-bold md:text-4xl">
+                Why Choose FIJI?
+              </h2>
             </FadeInSection>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -273,9 +275,13 @@ export default function ProgramsPage() {
         <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
           <FadeInSection>
             <div className="rounded-2xl border border-white/10 bg-linear-to-br from-[#1B1B1B] to-[#111111] p-8 md:p-12">
-              <h2 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Ready to Start Your Journey?
+              </h2>
               <p className="text-white/80 mb-6 max-w-2xl">
-                Choose the program that resonates with you and join FIJI today. Our welcoming community and experienced instructors are ready to guide you.
+                Choose the program that resonates with you and join FIJI today.
+                Our welcoming community and experienced instructors are ready to
+                guide you.
               </p>
               <Link
                 href="/#contact"
@@ -287,11 +293,6 @@ export default function ProgramsPage() {
           </FadeInSection>
         </section>
       </main>
-
-      <footer className="border-t border-white/10 bg-[#111111] px-5 py-8 text-center text-sm text-white/60">
-        <p>FIJI Programs - Training excellence for all ages and skill levels.</p>
-        <p className="mt-2">Copyright {year} FIJI (Firman Ishikawaryu Ju-Jutsu Indonesia). All rights reserved.</p>
-      </footer>
     </div>
   );
 }

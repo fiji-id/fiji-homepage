@@ -68,24 +68,30 @@ export default function FijiLandingPage() {
   ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (formStatus !== "idle") {
-      setFormStatus("idle");
-    }
+
+    // Only reset if currently submitted to avoid unnecessary state updates
+    if (formStatus === "submitted") setFormStatus("idle");
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    // Validation
+    if (!formData.fullName.trim() || !formData.phone.trim()) return;
 
     const inquiryMessage = [
       "Halo FIJI Indonesia, saya ingin mendaftar latihan.",
-      `Nama: ${formData.fullName}`,
-      `Phone/WhatsApp: ${formData.phone}`,
+      `Nama: ${formData.fullName.trim()}`,
+      `Phone/WhatsApp: ${formData.phone.trim()}`,
       `Program: ${formData.program}`,
-      `Pesan: ${formData.message || "-"}`,
+      `Pesan: ${formData.message.trim() || "-"}`,
     ].join("\n");
 
-    const whatsappUrl = `https://wa.me/6281200000000?text=${encodeURIComponent(inquiryMessage)}`;
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    window.open(
+      `https://wa.me/6281399784970?text=${encodeURIComponent(inquiryMessage)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
     setFormStatus("submitted");
   };
 
@@ -151,7 +157,7 @@ export default function FijiLandingPage() {
               <p className="mb-4 inline-block rounded-full border border-[#C62828]/50 bg-[#C62828]/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-red-100">
                 Japanese Martial Arts Community
               </p>
-              <h1 className="text-4xl font-bold leading-tight md:text-5xl">
+              <h1 className="mt-4 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
                 Build Confidence, Discipline, and Self-Defense Through Japanese
                 Ju-Jutsu
               </h1>
@@ -636,7 +642,7 @@ export default function FijiLandingPage() {
                 <div className="mt-4 space-y-3 text-sm text-white/75">
                   <p className="flex items-center gap-2">
                     <Phone className="h-4 w-4 text-[#2ECC71]" /> WhatsApp: +62
-                    812-0000-0000
+                    812-9978-4970
                   </p>
                   <p className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-[#3498DB]" /> Training Hall:
@@ -647,14 +653,13 @@ export default function FijiLandingPage() {
                     Facebook: @fiji.indonesia
                   </p>
                 </div>
-                <a
-                  href="https://maps.google.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-block rounded-full border border-white/25 px-4 py-2 text-sm font-semibold transition hover:border-white"
-                >
-                  Open Google Maps
-                </a>
+                {/* TODO: Add official FIJI headquarters Google Maps URL when available */}
+                <p className="mt-5 text-sm text-white/70">
+                  Official FIJI Headquarters Address Coming Soon
+                </p>
+                <p className="mt-2 text-xs text-white/50">
+                  Contact us via WhatsApp for training location details
+                </p>
               </div>
             </FadeInSection>
 
@@ -728,26 +733,14 @@ export default function FijiLandingPage() {
       </main>
 
       <a
-        href="https://wa.me/6281200000000"
+        href="https://wa.me/6281399784970?text=Halo%20FIJI%20Indonesia%2C%20saya%20ingin%20mendaftar%20latihan.%0A%0ANama%3A%20%5BIsi%20Nama%20Anda%5D%0APhone%2FWhatsApp%3A%20%5BIsi%20Nomor%20Anda%5D%0AProgram%3A%20%5BPilih%20Program%5D%0APesan%3A%20%5BIsi%20Pesan%20Tambahan%5D"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-[#111111] shadow-lg transition hover:brightness-95"
       >
         <MessageCircle className="h-4 w-4" />
         WhatsApp
       </a>
-
-      <footer className="border-t border-white/10 bg-[#111111] px-5 py-8 text-center text-sm text-white/60">
-        <p>
-          FIJI Indonesia - Ju-Jutsu Indonesia | Japanese martial arts |
-          Self-defense training | Anti-bullying martial arts | Women
-          self-defense
-        </p>
-        <p className="mt-2">
-          Copyright {year} FIJI (Firman Ishikawaryu Ju-Jutsu Indonesia). All
-          rights reserved.
-        </p>
-      </footer>
     </div>
   );
 }

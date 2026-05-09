@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import ErrorCatcher from "@/components/error-catcher";
+import SiteFooter from "@/components/site-footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,9 +42,8 @@ export default function RootLayout({
       className={`${inter.variable} ${notoSansJp.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ErrorCatcher>
-          {children}
-        </ErrorCatcher>
+        <ErrorCatcher>{children}</ErrorCatcher>
+        <SiteFooter />
       </body>
     </html>
   );
