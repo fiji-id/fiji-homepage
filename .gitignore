@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# SSH keys / credentials
+id_ed25519*
+id_rsa*
+*.pub
+.ssh/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -41,6 +47,9 @@ pnpm-debug.log*
 # tooling / IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
 # caches
 .vercel
